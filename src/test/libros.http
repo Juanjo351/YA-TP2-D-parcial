@@ -1,0 +1,24 @@
+###
+GET http://127.0.0.1:3003/api/json_file
+
+###
+GET http://127.0.0.1:3003/api/data_externa
+Content-Type: application/json
+{
+    "url": "https://raw.githubusercontent.com/plotly/datasets/refs/heads/master/beers.csv"
+}
+
+
+###
+GET http://127.0.0.1:3003/api/libro-valido/b72f94f2-bc09-49e4-85a6-83fd7eaa29c0
+
+###
+POST http://127.0.0.1:3003/api/libro
+Content-Type: application/json
+
+{
+    "libro":{
+        "title": "harry potter y la piedra filosofal"
+    }
+}
+

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "b72f94f2-bc09-49e4-85a6-83fd7eaa29c0",
+    "title": "Cien años de soledad",
+    "author": "Gabriel García Márquez",
+    "isbn": "978-3-16-148410-0",
+    "publishedDate": "1967-06-05",
+    "availableCopies": 4
+  },
+  {
+    "id": "a14c57e4-6d13-4bca-97a1-99ef2a23f9f5",
+    "title": "1984",
+    "author": "George Orwell",
+    "isbn": "978-0-452-28423-4",
+    "publishedDate": "1949-06-08",
+    "availableCopies": 3
+  },
+  {
+    "id": "f34a65b1-0bb8-4df9-a924-e5a3f27183bc",
+    "title": "Don Quijote de la Mancha",
+    "author": "Miguel de Cervantes",
+    "isbn": "978-84-376-0494-7",
+    "publishedDate": "1605-01-16",
+    "availableCopies": 5
+  },
+  {
+    "id": "d12b89ef-3927-402e-81d1-61b1b788e0c6",
+    "title": "Orgullo y prejuicio",
+    "author": "Jane Austen",
+    "isbn": "978-0-19-953556-9",
+    "publishedDate": "1813-01-28",
+    "availableCopies": 2
+  },
+  {
+    "id": "e02f718b-772e-4cc6-bc45-2319a32eb2f6",
+    "title": "El amor en los tiempos del cólera",
+    "author": "Gabriel García Márquez",
+    "isbn": "978-0-307-38968-3",
+    "publishedDate": "1985-09-05",
+    "availableCopies": 6
+  }
+]

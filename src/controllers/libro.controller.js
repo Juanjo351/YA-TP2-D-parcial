@@ -22,7 +22,7 @@ export const libroController = {
 	},
 
 	async escribirData(req, res) {
-		const url = req.body()
+		const url = req.body();
 		const data = await libroService.serviceEscribirData(url);
 
 		if (!data) {
@@ -43,7 +43,7 @@ export const libroController = {
 	},
 
 	async libroValidacion(req, res) {
-		const {id} = req.params
+		const { id } = req.params;
 		const libros = await libroService.serviceLibroValidacion(id);
 
 		if (!libros) {
@@ -100,6 +100,37 @@ export const libroController = {
 		res.status(200).json({
 			message: `Success:${idLibro} deleted`,
 			payload: { idLibro },
+			ok: true,
+		});
+		return;
+	},
+
+	libroUpdateById: async (req, res) => {
+		const { id, availableCopies } = req.body;
+		console.log(id, availableCopies);
+
+		const librosUpdated = await libroService.serviceUpdateLibro(
+			id,
+			availableCopies,
+		);
+
+		if (!librosUpdated) {
+			res.status(404).json({
+				payload: null,
+				message: "No se pudo actualizar nada",
+				ok: false,
+			});
+			return;
+		}
+
+		const newUpdatedLibros = librosUpdated.map((libro) => ({
+			title: libro.title,
+			newAvailableCopies: libro.availableCopies,
+		}));
+
+		res.status(200).json({
+			message: `Ticket modificado`,
+			payload: newUpdatedLibros,
 			ok: true,
 		});
 		return;

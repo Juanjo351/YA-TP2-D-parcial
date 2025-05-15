@@ -6,11 +6,11 @@ export const libroRepository = {
 	},
 
 	async repositoryEscribirData(data) {
-		await JsonHandler.write(data)
+		await JsonHandler.write(data);
 		return await JsonHandler.read();
 	},
 
-	async getById(idLibro){
+	async getById(idLibro) {
 		const libros = await JsonHandler.read();
 
 		if (!libros) return null;
@@ -45,6 +45,23 @@ export const libroRepository = {
 		try {
 			await JsonHandler.write(libroResponse);
 			return id;
+		} catch (e) {
+			return null;
+		}
+	},
+
+	updateById: async (id, availableCopies) => {
+		const libros = await JsonHandler.read();
+		const librosResponse = libros.filter((libro) => libro.id === id);
+		const librosOld = libros.filter((libro) => libro.id !== id);
+		const newAvailableCopies = availableCopies;
+		const modifiedLibros = librosResponse.map((libro) => ({
+			...libro,
+			availableCopies: newAvailableCopies,
+		}));
+		try {
+			await JsonHandler.write([...librosOld, ...modifiedLibros]);
+			return modifiedLibros;
 		} catch (e) {
 			return null;
 		}

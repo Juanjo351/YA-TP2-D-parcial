@@ -26,3 +26,11 @@ Content-Type: application/json
 ###
 DELETE http://127.0.0.1:3003/api/libro/b72f94f2-bc09-49e4-85a6-83fd7eaa29c0
 
+###
+PUT http://127.0.0.1:3003/api/update-available-copies
+Content-Type: application/json
+
+{
+    "title": "Don Quijote de la Mancha",
+    "availableCopies": 3
+}

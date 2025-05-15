@@ -5,12 +5,12 @@ export const libroService = {
 		return await libroRepository.repositoryLeerArchivo();
 	},
 
-	async serviceEscribirData(url){
-		const data = await fetch(url).then(res => res.json)
-		return await libroRepository.repositoryEscribirData(data)
+	async serviceEscribirData(url) {
+		const data = await fetch(url).then((res) => res.json);
+		return await libroRepository.repositoryEscribirData(data);
 	},
 
-	async serviceLibroValidacion(id){
+	async serviceLibroValidacion(id) {
 		const idLibro = libroRepository.getById(id);
 
 		if (!idLibro) return null;
@@ -23,11 +23,18 @@ export const libroService = {
 			...libro,
 			id: crypto.randomUUID().toString(),
 			isbn: crypto.randomUUID().toString(),
-			publishedDate:new Date() ,
-			availableCopies: Math.floor(Math.random() * 100) + 1
+			publishedDate: new Date(),
+			availableCopies: Math.floor(Math.random() * 100) + 1,
 		};
 
-		const modelLibro = new libro(dataLibro.id, dataLibro.title, dataLibro.author, dataLibro.isbn, dataLibro.publishedDate, dataLibro.availableCopies);
+		const modelLibro = new libro(
+			dataLibro.id,
+			dataLibro.title,
+			dataLibro.author,
+			dataLibro.isbn,
+			dataLibro.publishedDate,
+			dataLibro.availableCopies,
+		);
 
 		libroRepository.createOne(modelLibro);
 
@@ -38,5 +45,12 @@ export const libroService = {
 		const idLibro = libroRepository.deleteById(id);
 		if (!idLibro) return null;
 		return idLibro;
+	},
+
+	serviceUpdateLibro: (id, availableCopies) => {
+		const libros = libroRepository.updateById(id, availableCopies);
+		if (!libros) return null;
+
+		return libros;
 	},
 };

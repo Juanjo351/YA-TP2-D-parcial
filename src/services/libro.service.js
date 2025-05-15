@@ -16,5 +16,27 @@ export const libroService = {
 		if (!idLibro) return null;
 
 		return idLibro;
-	}
+	},
+
+	TicketCreation: (libro) => {
+		const dataLibro = {
+			...libro,
+			id: crypto.randomUUID().toString(),
+			isbn: crypto.randomUUID().toString(),
+			publishedDate:new Date() ,
+			availableCopies: Math.floor(Math.random() * 100) + 1
+		};
+
+		const modelLibro = new libro(dataLibro.id, dataLibro.title, dataLibro.author, dataLibro.isbn, dataLibro.publishedDate, dataLibro.availableCopies);
+
+		libroRepository.createOne(modelLibro);
+
+		return modelLibro;
+	},
+
+	serviceLibroDelete: (id) => {
+		const idLibro = libroRepository.deleteById(id);
+		if (!idLibro) return null;
+		return idLibro;
+	},
 };

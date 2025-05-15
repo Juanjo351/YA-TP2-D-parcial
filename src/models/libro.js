@@ -1,5 +1,10 @@
 export class libro {
-	constructor(id, title, author, isbn, publishedDate, availableCopies) {
+	constructor(id, 
+		         title, 
+				 author, 
+				 isbn, 
+				 publishedDate, 
+				 availableCopies) {
 		this.id = id;
 		this.title = title;
 		this.author = author;

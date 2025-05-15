@@ -62,4 +62,46 @@ export const libroController = {
 		});
 		return;
 	},
+
+	libroCreateOne: async (req, res) => {
+		const { ticket } = req.body;
+		try {
+			const libroResponse = TicketService.serviceTicketCreation(ticket);
+			res.status(200).json({
+				message: "Success",
+				payload: { ...libroResponse, title: "******" },
+				ok: true,
+			});
+			return;
+		} catch (e) {
+			console.log({ message: e.message, message: "algo salio mal" });
+			res.status(404).json({
+				payload: null,
+				message: "No se pudo crear el libro",
+				ok: false,
+			});
+			return;
+		}
+	},
+
+	libroDeleteOne: async (req, res) => {
+		const { id } = req.params;
+		const idLibro = await libroService.serviceLibroDelete(id);
+
+		if (!idLibro) {
+			res.status(404).json({
+				payload: null,
+				message: "No se pudo borrar el libro",
+				ok: false,
+			});
+			return;
+		}
+
+		res.status(200).json({
+			message: `Success:${idLibro} deleted`,
+			payload: { idLibro },
+			ok: true,
+		});
+		return;
+	},
 };
